@@ -1,0 +1,127 @@
+<head>
+    <title>
+        Ridicare la putere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    <link rel="stylesheet" href="../../CSS/Problem%20E/lgput.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/lgput.js"></script>
+</head>
+
+<body onload="doStart()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descriere soluție</h1>
+    
+    <div class="text">
+        <div class="par">Proprietățile lui modulo</div>
+        
+        &emsp;&emsp;Mai întâi vom vorbi despre ce proprietăți are modulo în raport cu adunarea și înmulțirea. <br>
+        
+        &emsp;&emsp;Modulo în raport cu înmulțirea este distributiv, ceea ce înseamnă că (a<sub>1</sub> * a<sub>2</sub> * ... * a<sub>n</sub>) % MOD este echivalent cu ((a<sub>1</sub> % MOD) * (a<sub>2</sub> % MOD) * ... * (a<sub>n</sub> % MOD)) % MOD. Pentru a înțelege mai bine această proprietate vom aplica pe (8 * 5 * 3 * 15) % 7. Distribuim modulo la fiecare termen și obținem: ((8 % 7) * (5 % 7) * (3 % 7) * (15 % 7)) % 7 = (1 * 5 * 3 * 1) % 7 = 15 % 7 = 1. Această proprietate se aplică și la adunare. <br><br>
+        
+        <div class="par">Soluția O(P)</div>
+        
+        &emsp;&emsp;O prima soluție a acestei probleme implică memorarea unei variabile <b>ans</b> pe care o vom inițializa cu 1. Deoarece N<sub>P</sub> = N * N * N * ... * N, unde N apare de P ori, vom parcurge un for în care ans se va înmulți de P ori cu N. Trebuie să ținem cont că rezultatul trebuie afișat modulo 666013, din cauza că N<sup>P</sup> poate deveni un număr foarte mare care nu ar încăpea în memorie ca la final să-i facem direct restul împărțirii lui la 666013, vom aplica proprietatea de distribuire a lui modulo, ceea ce înseamnă că de fiecare dată când îl vom înmulți pe ans cu N, ans va luat valoarea produsului dintre el și N modulo 666013, adică ans = ans * N % MOD. Pentru a nu avea probleme cu overflow-ul, este recomandat ca ans să fie de tip <b>long long</b>. Complexitatea acestui algoritm este O(P), chiar dacă este liniară complexitate, din cauza că P este foarte mare, complexitatea acestui algoritm devine mult prea mare.<br><br>
+        
+        <div class="par">Soluția O(log<sub>2</sub>P)</div>
+        
+        &emsp;&emsp;Pentru a putea să rezolvăm această problema în cel mai eficient mod, ne vom folosi de o observație cu privire la modul cum îl putem scrie pe N<sup>P</sup>. Presupunem că P este par pentru a ne ușura calculele și îl vom împărți pe acesta la 2, adică P/2 + P/2. O proprietate importantă a ridicării la putere spune că x<sup>a + b</sup> = x<sup>a</sup> * x<sup>b</sup>, aplicând această proprietate în cazul nostru, obținem N<sup>P</sup> = N<sup>P/2 + P/2</sup> = N<sup>P/2</sup> * N<sup>P/2</sup>. Deoarece avem 2 termeni indentici, va trebui să calculăm doar cât face N<sup>P/2</sup> apoi îl vom înmulți cu el însuși, astfel complexitate algoritmului reducându-se la O(P/2). Acest proces îl putem repetă pentru N<sup>P/2</sup> că să transform în 2 termeni care sunt mai ușor de calculat decât acesta. O metodă asemănătoare vom folosi și pentru algoritmul noastru, doar că noi vom încerca să-l scriem pe P că o suma de puteri a lui 2, pe scurt vom încerca să facem reprezentare binară a acestui număr. Pentru a generaliza problema, vom considera bit[i] valoarea bitului de pe poziția i care poate 1 sau 0. Reamintim de la reprezentare binară a unui număr că: 
+        <center>P = bit[0] * 2<sup>0</sup> + bit[1] * 2<sup>1</sup> + bit[2] * 2<sup>2</sup> + ... + bit[nr] * 2<sup>n</sup></center>
+        &emsp;&emsp;Acum îl putem scrie pe N<sup>P</sup> ca:
+        <center>N<sup>P</sup> = N<sup>bit[0] * 2<sup>0</sup> + bit[1] * 2<sup>1</sup> + bit[2] * 2<sup>2</sup> + ... + bit[nr] * 2<sup>n</sup></sup></center>
+        &emsp;&emsp;Aplicând proprietatea legată de distribuirea exponenților adunați obținem:
+        <center>N<sup>P</sup> = N<sup>bit[0] * 2<sup>0</sup></sup> * N<sup>bit[1] * 2<sup>1</sup></sup> * N<sup>bit[2] * 2<sup>2</sup></sup> * ... * N<sup>bit[nr] * 2<sup>nr</sup></sup></center>
+        &emsp;&emsp;Dacă bit[i] = 0, atunci N<sup>bit[i] * 2<sup>i</sup></sup> = N<sup>0</sup> = 1 ce este element neutru în raport cu înmulțirea. Raportându-ne la relația obținută mai sus, observăm că va fi nevoie doar să calculăm cât face N<sup>2<sup>i</sup></sup>, unde 0 &#8804; i &#8804; nr, iar nr este numărul maxim de biți pe care îi are P. Deoarece numărul maxim pe care îi are P este log<sub>2</sub>P, calculând N<sup>2<sup>i</sup></sup> într-un timp liniar, obținem complexitate O(log<sub>2</sub>P).<br>
+        
+        &emsp;&emsp;Pentru a putea scrie această problemă, vom începe mai întâi prin a încerca să facem reprezentare binară a lui P, doar că în același timp vom calcula și N<sup>P</sup>. Vom aplică aceeași metodă ca la reprezentare binară a unui număr, îl vom împărți pe P la 2 cât timp este diferit de 0, iar dacă restul lui P la 2 este 1, atunci înseamnă că bitul respectiv este 1 și vom fi nevoiți să calculăm N<sup>2<sup>i</sup></sup>, unde i este numărul bitului la care am ajuns. Numărul de biți a unui număr este egal cu de câte ori se împarte acesta la 2 sau pe scurt, log<sub>2</sub>x. Vom ține 2 variabile <b>ans</b> - rezultatul final, <b>x</b> - valoarea lui N<sup>2<sup>i</sup></sup>, inițial ans = 1, iar x = N, deoarece N<sup>2<sup>0</sup></sup> = N. Dacă P % 2 == 1, atunci bitul este 1, ceea ce înseamnă că ans se va înmulți cu x . La fiecare bit pe care l-am verificat, x se va înmulți cu el însuși, pentru a avansa la următoarea putere a lui 2, adică cum x = N<sup>2<sup>nr</sup></sup>, atunci pentru a ajunge la N<sup>2<sup>nr + 1</sup></sup>, x = N<sup>2<sup>nr</sup></sup> * N<sup>2<sup>nr</sup></sup> = N<sup>2<sup>nr</sup> + 2<sup>nr</sup></sup> = N<sup>2<sup>nr + 1</sup></sup>.<br>
+        
+        &emsp;&emsp;Vom considera că variabila MOD = 666013, nu uităm că de fiecare dată când înmulțim numerele aplicăm modulo. Codul pentru o asemenea rezolvare ar fi:
+        
+        <div class="code">
+            <div class="colCyan">long long</div> ans <div class="colRed">=</div> 1, x <div class="colRed">=</div> N; <br>
+            <div class="colRed">while</div>(P){ <br>
+                &emsp;&emsp;<div class="colRed">if</div>(P <div class="colRed">%</div> 2 <div class="colRed">==</div> 1) <br>
+                &emsp;&emsp;&emsp;&emsp;ans <div class="colRed">=</div> ans <div class="colRed">*</div> x <div class="colRed">%</div> MOD; <br>
+                &emsp;&emsp;x <div class="colRed">=</div> x <div class="colRed">*</div> x <div class="colRed">%</div> MOD; <br>
+                &emsp;&emsp;P <div class="colRed">/=</div> 2; <br>
+            } <br>
+            <div class="colGreen">cout</div> <div class="colRed"><<</div> <div class="colPurple">ans</div>;
+        </div>
+        
+        &emsp;&emsp;Dumnevoastră veți putea seta ce input doriți, atât timp cât respectă condițiile din enunț, fiind reprezentat grafic modul cum procesează algoritmul.
+        
+        <div class="myGraph">
+            <div class="myInput">
+                <input type="text" id="myInputText" class="myInputText" value="12 9">
+                <button id="inputButton" class="inputButton" onclick="runCommand(this)">Run</button>
+            </div>
+            <div class="myValues">
+                 <table id="myTable" class="myTable">
+                    <tr>
+                         <th>var</th>
+                        <th>value</th>
+                    </tr>
+                     <tr>
+                        <th>N</th>
+                        <th>12</th>
+                     </tr>
+                     <tr>
+                        <th>P</th>
+                        <th>9</th>
+                     </tr>
+                    <tr>
+                        <th>P % 2</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>ans</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>x</th>
+                        <th>12</th>
+                    </tr>
+                    <tr>
+                        <th>P / 2</th>
+                        <th>4</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="nextPage">
+            <a href="../Problem%20D/binSearch.html">Test Page</a>
+        </div>
+    </div>
+    
+</body>

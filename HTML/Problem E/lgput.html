@@ -1,0 +1,105 @@
+<head>
+    <title>
+        Ridicare la putere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    <link rel="stylesheet" href="../../CSS/task.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Povestea continuă...</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;<b>Poveste</b></div>
+        <div>
+            &emsp;&emsp;Cu toate că Împăratul și-a pregătit armata cum trebuie și a reușit să învingă Împărăția Roșie după ani și ani de luptă, acesta nu a reușit să găsească Gnobul Magic, realizând astfel că totul a fost fals despre ceea ce credea. Foarte supărat, Împăratul se îmbolnăvește grav, ajuns pe patul de moarte are o revelație cu privire la Gnobul Magic și anume că a fost o poțiunea spirituală, nu oricine fiind capabil să găsească acest Gnob magic, doar o persoană vrednică, curajoasă, înțeleaptă și puternică este demnă să obțină această putere infinită, astfel Împăratul Verde a înțeles că Gnobul Magic este o unealtă ce inițiază oameni vrednici și-i duce spre ceea ce merită cu adevărat. Cu toate că a încercat să caute peste tot această poțiune verzuie, Împăratul nu a reușit, ba chiar mai mult, își pierduse unul dintre fii care nu se mai întorsese niciodată acasă. Chiar înainte să moară, unul dintre spionii săi intră repede pe ușa și-l informează pe Împărat că fiul cel mic trăiește, ba chiar mai mult, această a reușit să facă față tuturor probelor care l-au încercat, însă urma acestuia s-a pierdut într-un oraș foarte misterior, nemaiauzit de nimeni, numit Adjud. Zâmbind ușor, Împăratul nostru le spune supușilor săi ce a văzut în una dintre călătoriei sale și este neapărat nevoie să rezolve o problemă care sună așa: dându-se 2 numere naturale N și P, se cere să se afle valoarea lui N la puterea P. Din păcate, deoarece supușii nu se pricep la matematică, Împăratul moare înainte că ei să poată răspundă la această întrebare, așa că va cere vouă ajutorul pentru a dezluci misterul ultimelor cuvinte a Împăratului Verde.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Cerință</b></div>
+        <div>
+            &emsp;&emsp;Dându-se 2 numere naturale N și P, calculați N<sup>P</sup> modulo 666013.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de intrare</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de intrare <u><i>emperor.in</i></u> conține pe prima linie 2 numere naturale N, P. 
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de ieșire</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de ieșire <u><i>emperor.out</i></u> va conține valoarea lui N<sup>P</sup> modulo 666013.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Restricții</b></div>
+        <div>
+            <ul>
+                <li>1 &#8804; N &#8804; 1 000 000 000;</li>
+                <li>1 &#8804; P &#8804; 10<sup>15</sup>;</li>
+            </ul>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Exemplu</b></div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>emperor.in</th>
+                    <th>emperor.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        12 9
+                    </th>
+                    <th>
+                        177641
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Explicare</b></div>
+        <div>
+            &emsp;&emsp;12<sup>9</sup> = 5 159 780 352 care modulo 666013 face 177641.
+        </div>
+        
+        <div class="nxtPage">
+            <a href="descriere.html" class="nextPage">Descrierea soluției</a>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Unde este Gnobul Magic?</b></div>
+        <div>
+            &emsp;&emsp;Cu toate că supușii împăratului au reușit să rezolve problema, aceștia n-au reușit să deslușească misterul din spatele problemei, cel mai probabil fiind criptat vrun cod, iar această problema a fost atât de grea de descifrat încât nimeni nu a reușit până în ziua de azi, fiind supradenumită Cicada 3301. Veștile despre fiul cel mic n-au mai apărut, acesta rămânând dispărut pentru totdeauna. Despre Gnobul Magic se crede că ar exista și în zilele noastre, iar așa cum spune legenda, acest Gnob se va arată și va acceptă doar pe cea mai vrednică persoană dintre toate, chiar și în zilele noastre lumea încă se întreabă: unde este gnobul magic?
+        </div>
+    </div>
+</body>
