@@ -1,0 +1,68 @@
+.menu{
+    height: 7.4vh;
+    background-color: rgba(31, 31, 31, 1);
+    width: 101.55%;
+    margin-left: -1vw;
+    margin-top: -2vh;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+
+.logo{
+    color: white;
+    font-size: 5vh;
+    padding-left: 5vw;
+    padding-top: 0.9vh;
+}
+
+.button{
+    position: absolute;
+    color: white;
+    background-color: rgba(66, 66, 66, 1);
+    font-size: 3.5vh;
+    border-style: solid;
+    border-color: white;
+    margin-top: -4.9vh;
+    padding-left: 0.6vw;
+    cursor: pointer;
+}
+
+.home{
+    margin-left: 50%;
+}
+
+.algorithms{
+    margin-left: 60%;
+}
+
+.test{
+    margin-left: 73.5%;
+}
+
+.contact{
+    margin-left: 82.5%;
+}
+
+.myDropMenu{
+    position: absolute;
+    display: none;
+    background-color: rgba(31, 31, 31, 1);
+    border-style: solid;
+    border-color: white;
+    margin-left: 52%;
+    margin-right: 5vw;
+    margin-top: 0.8vh;
+}
+
+.myDropMenu a{
+    color: white;
+    font-size: 3vh;
+    text-decoration: none;
+    margin-top: -0.3vh;
+    display: block;
+    padding: 0.2vh 1.2vw;
+}
+
+.show {
+    display: block;
+}

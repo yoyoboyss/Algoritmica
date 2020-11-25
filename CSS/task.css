@@ -1,0 +1,86 @@
+body {
+    background-color: rgba(10, 10, 10, 1);
+}
+
+h1{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    font-size: 5vh;
+}
+
+.text{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    background-color: rgba(31, 31, 31, 1);
+    font-size: 2.5vh;
+    padding: 2vh 2vw;
+    border-style: solid;
+    border-color: dimgray;
+    border-width: 2px;
+    margin: 1vh 0.5vw;
+}
+
+.par{
+    font-size: 3.5vh;
+    padding: 1.5vh 0vw;
+}
+
+.exempleTable{
+    background-color: rgba(20, 20, 20, 1);
+    color: white;
+    border: solid white 2px;
+    border-collapse: collapse;
+    margin: auto;
+    width: 88vw;
+}
+
+.exempleTable .trHead th{
+    background-color: rgba(25, 25, 25, 1);
+    border: solid white 2px;
+    border-collapse: collapse;
+    padding: 0.5vh 1vw;
+}
+
+.exempleTable .exRow th{
+    background-color: rgba(25, 25, 25, 1);
+    border: solid white 2px;
+    border-collapse: collapse;
+    text-align: left;
+    padding: 0.9vh 1vw;
+}
+
+.nxtPage{
+    margin-left: 70vw;
+    margin-top: -4.5vh;
+    margin-bottom: 6vh;
+}
+
+.nextPage{
+    color: white;
+    background-color: rgba(25, 25, 25, 1);
+    text-decoration: none;
+    border: solid white 1px;
+    padding: 2vh 1vw;
+}
+
+.colGreen{
+    color: rgba(18, 181, 13, 1);
+    display: inline;
+    font-size: 100%;
+}
+
+.littleSonTable{
+    color: white;
+    font-size: 110%;
+    margin-left: 5%;
+    text-align: center;
+    border: solid white 2px;
+    border-collapse: collapse;
+    margin-top: 1vh;
+}
+
+
+
+
+
