@@ -1,0 +1,128 @@
+<head>
+    <title>
+        Descriere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    <link rel="stylesheet" href="../../CSS/Problem%20D/binSearch.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/binSearch.js"></script>
+</head>
+
+<body onload="runOnLoad()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descriere soluție</h1>
+    
+    <div class="text">
+        <div class="par">Soluție O(N * Q)</div>
+        
+        &emsp;&emsp;O prima soluție a problemei presupune parcurgerea șirului până când găsim valoare pe care o căutăm. Vom ține o variabilă <b>ok</b> care va memora dacă am găsit sau nu valoarea căutată. Inițial o vom inițializa cu 0. Parcurgem vectorul cât timp nu am ajuns încât la finalul acestuia, dacă am găsit valoare căutată, ok devine 1 și ne oprim din căutare, iar dacă am terminat de parcurs întregul vector și nu am găsit valoare căutată, ok va fi 0. După parcurgerea vectorului vom afișa răspunsul pe baza unui <b>if</b>, dacă <i>ok == 1</i>, atunci afișăm <b>DA</b>, altfel afișăm <b>NU</b>. Din cauza că în cel mai rău caz am parcurge cele N elemente pentru a află răspunsul la o întrebare, complexitate algoritmului este O(N * Q). <br><br>
+        
+        <div class="par">Solutie O(Q * log<sub>2</sub>N)</div>
+        
+        &emsp;&emsp;O a două metodă de rezolvare a acestei probleme implică căutarea binară a valorii căutate. Căutarea binară se aplică doar pe funcții care sunt monoton crescătoare sau descrescătoare. În cazul nostru, avem valori unice și sunt ordonat crescător, asta înseamnă că avem șirul poate fi reprezentat că o funcție strict crescătoare, ceea ce putem spune că este monoton crescătoare. Stabilind aceste idei, presupunem că valoare pe care o caută este <b>x</b>, vom putea spune ceva despre el în legătură cu orice element din șir. Să considerăm că ne uităm la un element oarecare din șir, pe care îl vom nota cu <b>y</b>. Dacă elementul y este mai mare decât x, atunci înseamnă că valoare pe care o căutăm se va află strict la stânga lui, deoarece șirul este strict crescător, valoare y nu ar avea cum să fie mai mică decât x și să fie la dreapta acestuia, respectiv dacă x este mai mare decât elementul y, atunci înseamnă că valoare pe care o căutăm se află strict la dreapta lui y. Este că și cum am avea funcția f(x) = x, care este o funcție strict crescătoare, și căutăm să vedem unde este x = 3 pe graficul funcției. Dacă ne vom uită mai întâi la valoare x = 6 atunci putem spune că 3 se află la stânga valorii lui 6, din cauza că este mai mic decât acesta, astfel putem face analogia acestei aplicații din matematică cu algoritmul de căutare binară. <br>
+        
+        &emsp;&emsp;Revenind la algoritmul nostru, elementele pe care le vom alege că să spunem ceva despre x nu vor fi întâmplătoare. Vom începe prin a ne uită la valoare din mijlocul vectorului nostru, dacă este mai mare decât x, atunci înseamnă că tot ce este în dreapta valorii din mijloc este mai mare decât x, ceea ce înseamnă că x nu se va află prin niciuna dintre valorile respective, astfel vom ignoră complet elementele din dreapta poziției din mijloc, interesându-ne doar elementele din stânga poziției din mijloc, deoarece acolo este posibil să se afle valoarea x. Analog, procedăm și în cazul în care valoare din mijloc este mai mică decât x, ignorăm elementele din stânga poziției din mijloc și ne va interesa doar ce este în dreapta acesteia. Pentru jumătate, o vom interpreta ca un nou interval, și ne vom uita din nou la elementul din mijlocul acesteia și vom alege jumătatea care ne interesează și unde este șansa să-l găsim pe x. Vom repetă acest algoritm cât timp lungimea subsecvenței la care am ajuns este diferită de 1, adică am ajuns la un singur element. Dacă acel element este egal cu x, atunci vom afișa <b>DA</b>, respectiv dacă nu este egal cu x, vom afișa <b>NU</b>. <br>
+        
+        &emsp;&emsp;Pentru a putea scrie acest algoritm, vom avea nevoie de 2 variabile care vor ține capetele intervalului care ne interesează la un moment dat. Variabilă <b>st</b> va ține poziția capătului stâng al intervalului respectiv, în timp ce variabila <b>dr</b> va ține poziția capătului drept al intervalului. Inițial aceste valori vor trebuie să descrie întregul vector, adică st = 1 și dr = N. Mijlocul intervalului îl vom notă cu <b>mid</b>, și va fi <i>mid = (st + dr) / 2</i>. Dacă <b>v[mid]</b>, adică valoare din mijlocul intervalului la care am ajuns, este mică sau egală decât x, valoarea pe care o căutăm, atunci înseamnă că valoare pe care o căutăm se află la dreapta poziției acesteia și va trebui să mutăm capătul stâng al intervalului curent pe poziția <b>mid + 1</b>, obținând astfel un interval cu capetele [mid + 1, dr] în care ar putea exista valoarea căutată. Pentru a ușura problema, vom ține o variabilă <b>last</b>, care va memora valoarea ultimei element care este mai mic sau egal decât x, adică de fiecare dată când <i>v[mid] &#60;= x</i>, last va lua valoare v[mid]. Poziția mid este eliminată din cauza că am reținut v[mid] în variabilă last. În cazul în care această condiție a fost falsă, atunci v[mid] este strict mai mare decât x, ceea ce înseamnă că va trebui să mutăm capătul dreapt al intervalului curent pe poziția <b>mid - 1</b>, deoarece v[mid] este sigur diferit de x, obținem noul interval cu capetele [st, mid - 1]. Vom continuă acest proces cât timp <b>st &#60;= dr</b>, la finalul întregului proces, în variabilă <u>last</u> va fi memorată cea mai mare valoare, mai mică sau egală decât x, dacă <i>v[last] == x</i>, atunci înseamnă că am reușit să găsim valoare x și vom afișa <b>DA</b>, în cazul in care nu este <i>v[last] != x</i>, atunci valoare x nu este in vector și vom afișa <b>NU</b>. <br>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        &emsp;&emsp;Deoarece noi selectăm un anumit interval și înjumătățim lungimea acestuia cât timp este diferită de 1, numărul acestor procese va fi log<sub>2</sub>N, unde N este lungimea vectorului, ceea ce înseamnă că se obține complexitate de O(log<sub>2</sub>N) pe o întrebare. Întreagă problema are complexitatea O(Q * log<sub>2</sub>N), unde Q este numărul de întrebări. <br>
+        
+        &emsp;&emsp;Codul pentru un asemenea algoritm ar fi:
+        
+        <div class="code">
+            <div class="colCyan">void</div> binsearch(<div class="colCyan">int</div> x){ 
+            &emsp;&emsp; <div class="colComment"> // <i>x va fi valoarea pe care o cautam</i></div> <br>
+                &emsp;&emsp; <div class="colCyan">int</div> st <div class="colRed">=</div> 1, dr <div class="colRed">=</div> N, mid; <br>
+                &emsp;&emsp; <div class="colCyan">int</div> last <div class="colRed">=</div> 0; 
+                &emsp;&emsp; <div class="colComment"> // <i>initializam variabilele</i></div> <br>
+                &emsp;&emsp; <div class="colRed">while</div>(st <div class="colRed">&#60;=</div> dr){ 
+                    &emsp;&emsp; <div class="colComment"> // <i>cat timp lungimea subsecventei selectat este diferita 1</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp;
+                    mid <div class="colRed">=</div> (st <div class="colRed">+</div> dr) / 2; 
+                    &emsp;&emsp; <div class="colComment"> // <i>mijlocul subsecventei selectata</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp;
+                    <div class="colRed">if</div>(v[mid] <div class="colRed">&#60;=</div> x){ 
+                    &emsp;&emsp; <div class="colComment"> // <i>verificam cum este mijlocul in raport cu x</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        st <div class="colRed">=</div> mid <div class="colRed">+</div> 1; 
+                        &emsp;&emsp; <div class="colComment"> // <i>mutam capatul stang al subsecventei</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        last <div class="colRed">=</div> v[mid]; 
+                        &emsp;&emsp; <div class="colComment"> // <i>last retine cea mai mare valoare mai mica sau egala decat x</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp;
+                    } <div class="colRed">else</div> dr <div class="colRed">=</div> mid <div class="colRed">-</div> 1; 
+                    &emsp;&emsp; <div class="colComment"> // <i>mutam capatul drept al subsecventei</i></div><br>
+                &emsp;&emsp; } <br>
+                &emsp;&emsp; <div class="colRed">if</div>(v[last] <div class="colRed">==</div> x) 
+                &emsp;&emsp; <div class="colComment"> // <i>verificam daca am gasit elementul x in vectorul initial</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp;
+                    <div class="colGreen">cout</div> <div class="colRed">&#60;&#60;</div> <div class="colPurple">"DA\n"</div>; <br>
+                &emsp;&emsp; <div class="colRed">else</div> <div class="colGreen">cout</div> <div class="colRed">&#60;&#60;</div> <div class="colPurple">"NU\n"</div>; <br>
+            }
+        </div>
+        
+        &emsp;&emsp;Reprezentare grafică a acestui algoritm este prezentată mai jos. Dumnevoastră veți putea introduce testul pe care doriți să-l executați, testul trebuie să respecte condițiile impuse în enunțul problemei. Linia pos reprezintă pozițiile în vector, iar linia v reprezintă vectorul din test .Valorile colorate în cyan reprezintă capetele intervalului selectat, valoarea colorată în roșu reprezintă mijlocul intervalului, iar valoarea coloarata în verde reprezintă variabilă last cu proprietățile descrise mai sus. Mai jos de tabelul cu vectorul veți pozițiile variabilelor, unde se află st care va fi scris că s, dr - d, mid - m și last - l. l.
+        
+        <div class="myGraph">
+            <textarea id="inputTest" class="inputTest" cols="40" rows="5">10 8 &#13;1 3 4 6 7 10 13 30 33 53 &#13;1 &#13;4 &#13;5 &#13;9 &#13;15 &#13;10 &#13;53 &#13;2</textarea>  
+                
+            <div>
+                <button id="runTestButton" class="runTestButton" onclick="runTest(this)">Run</button>
+            </div>
+            
+            <div class="myTable">
+                <table id="inputTable" class="inputTable">
+                    <tr>
+                        <td>par</td>
+                    </tr>
+                </table>
+                
+                <div class="myDebug">
+                    <div id="varX"></div>
+                    <div id="varCond"></div>
+                    <div id="varLast"></div>
+                    <div id="varAns"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nextPage">
+            <a href="../Problem%20E/lgput.html">Next Page</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,120 @@
+<head>
+    <title>
+        Căutare binară
+    </title>
+    
+    <link rel="stylesheet" href="..\..\CSS\menu.css">
+    <link rel="stylesheet" href="..\..\CSS\task.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/littleSon.js"></script>
+</head>
+
+<body onload="matGenerate()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Împărăția Roșie</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;<b>Poveste</b></div>
+        <div>
+            &emsp;&emsp;În timpul în care Împăratul Verde aștepta ca fiul cel mic, Denis, să se întoarcă cu Gnobul Magic, acesta primește o veste uimitoare. Vestea spunea că este probabil ca Gnobul Magic să fie ascuns în Împărăția Roșie, împărăția rivală tărâmului GreenLand, fiind condusă de Împăratul Roșu despre care nu se știau multe detalii. Împăratul Verde auzind că Gnobul Magic ar putea fi în Împărăția Roșie își adună o armata din toate colțurile împărăției și pornește în război împotriva acesteia. Înainte să înceapă războiul, Împăratul face ultimele verificări să vadă dacă toți soldații pe care i-a chemat s-au prezentat, așa le oferă tuturor soldaților chemați un id unic <b>x</b>, ii așează crescător după valoarea id-ul și se întreabă: este prezent soldatul cu id-ul <b>y</b>? Deoarece este disperat să facă cât mai repede verificările, vă oferă vouă toate informațiile și vă cere să-i răspundeți la cele Q întrebări pentru prezență, iar dacă veți reuși în cel mai scurt timp posibil, vă promite că va împărtăși cu voi tainele pe care le-a aflat despre Gnobul Magic.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Cerință</b></div>
+        <div>
+            &emsp;&emsp;Dându-se 2 numere naturale N și Q, un șir de N numere naturale sortate crescător, răspundeți la Q întrebări de forma: este prezent soldatul cu id-ul x? Dacă soldatul este prezent, se va printa DA, iar dacă nu este, se va printa NU.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de intrare</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de intrare <u><i>red.in</i></u> conține pe prima linie 2 numere naturale N, Q. Pe următoare linie vor fi descrise cele N id-uri ale soldaților ordonate crescător. Pe următoarele Q linii se va află un singur număr natural x la care va trebui să răspundeți dacă se află sau nu în șirul dat.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de ieșire</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de ieșire <u><i>red.out</i></u> va conține Q linii, a i-a linie fiind răspunsul pentru a i-a întrebare.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Restricții</b></div>
+        <div>
+            <ul>
+                <li>1 &#8804; N, Q &#8804; 100 000;</li>
+                <li>0 &#8804; v[i] &#8804; 2 000 000 000, unde v[i] este element al șirului dat;</li>
+                <li>0 &#8804; x &#8804; 2 000 000 000, unde x este id-ul căutat dintr-o întrebare;</li>
+            </ul>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Exemplu</b></div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>fiu.in</th>
+                    <th>fiu.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        10 8 <br>
+                        1 3 4 6 7 10 13 30 33 53 <br>
+                        1 <br>
+                        4 <br>
+                        5 <br>
+                        9 <br>
+                        15 <br>
+                        10 <br>
+                        53 <br>
+                        2
+                    </th>
+                    <th>
+                        DA <br>
+                        DA <br>
+                        NU <br>
+                        NU <br>
+                        NU <br>
+                        DA <br>
+                        DA <br>
+                        NU
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Explicare</b></div>
+        <div>
+            &emsp;&emsp;1 este primul element al sirului. <br>
+            &emsp;&emsp;4 se afla pe pozitia a 3-a in sirul dat. <br>
+            &emsp;&emsp;5, 9 si 15 nu exista in sir. 
+        </div>
+        
+        <div class="nxtPage">
+            <a href="descriere.html" class="nextPage">Descrierea soluției</a>
+        </div>
+    </div>
+</body>
