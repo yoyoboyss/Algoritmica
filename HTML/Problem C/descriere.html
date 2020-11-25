@@ -1,0 +1,155 @@
+<head>
+    <title>
+        Descriere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    <link rel="stylesheet" href="../../CSS/Problem%20C/littleSon.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/littleSon.js"></script>
+</head>
+
+<body onload="screenStart()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descriere soluție</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;Soluția O(N<sup>2</sup>)</div>
+        <div>
+            &emsp;&emsp;Pentru a rezolva această problema ne vom folosi de un algoritm pentru parcurgerea tabloului, și anume Algoritmul lui Lee. Deoarece deplasarea se poate realiza doar la N, E, S sau V, asta înseamnă că din celulă (i, j) ne vom deplasa pe una dintre celulele: (i - 1, j), (i, j + 1), (i + 1, j) respectiv (i, j - 1). Când ne deplasăm ne asigura ca nu cumva să ieșim din limitele tabloului, adică de fiecare dată când ne uităm la celulele învecinate celei curente, ne asigurăm că pozițiile să nu iasă din tablou și că valoarea poziției pe care vrem să ne deplasăm să fie diferită de 1, deoarece dacă valoarea ar fi 1, atunci este o celulă inacesibilă.<br>
+            &emsp;&emsp;Pentru a putea realiza deplasarea ne vom folosi de o matrice pe care o vom numi: <b>par</b>, cu același dimensiuni ca matricea care reprezintă harta, pe care o vom inițializă în întregime cu o valoare foarte mare, de exemplu 2 * 10<sup>9</sup>, singură valoare din matrice care va fi 1 este chiar poziția de pe care pleacă fiul cel mic. Condițiile de plasare la o căsuța vecină celei curent pe care ne aflăm, vor fi că să rămânem în tablou, așa cum am prezentat mai sus, dar și că lungimea drumului până la căsuța curentă + 1 să fie mai mică decât lungimea drumului până la căsuța pe care vrem să ne deplasăm.<br>
+            &emsp;&emsp;Pentru a face această deplasarea cât mai eficientă ne vom folosi de o structura de date numită <b>queue</b>, care înseamnă coadă și are proprietate că primul element adăugat este ultimul care iese din coadă. Aceast coadă va avea că tip de dată structura de date <b>pair</b>, care ține o pereche de 2 numere, care ne va ajută să știm linia și coloana unei căsuțe pe care am ajuns. Inițial vom adaugă în coadă perechea (1, 1), ne vom uită la vecinii acesteia și îi vom adauga doar pe cei care îndeplinesc condițiile impuse de noi, după care vom șterge această pereche și continuând astfel procesul cu restu, din nou pentru fiecare ne vom uită la vecinii și îi vom alege doar pe cei care îndeplinesc condițiile prezentate mai sus. Funcția <b>queue.front()</b> ne va ajuta să identificăm mai ușor elementul din fruntea conzii, în timp ce <b>queue.pop()</b> va șterge acest element când deja l-am parcurs. Deplasarea se realizează țînând cont de 2 vectori, numiți vectori de deplasare:
+            <center>int di[4] = {-1, 0, 1, 0};<br>
+                    int dj[4] = {0, 1, 0, -1}; </center>
+            &emsp;&emsp; Dacă poziția curentă este perechea pos, unde pos.first reprezintă linia pe care ne aflăm, iar pos.second reprezintă coloana pe care ne aflăm, atunci pentru a ne deplasa într-o direcție vom adună la aceste valori <b>di[d]</b>, pentru linie, respectiv <b>dj[d]</b>, pentru coloană, unde <b>d</b> este direcția în care vrem să ne deplasăm, având valori cuprinse între 0 și 3.<br>
+            &emsp;&emsp;Vom execută acest algoritm cât coadă nu este încă goală, adică <b>while(!Q.empty())</b>, iar la final în matricea par[i][j] va reprezenta lungimea minimă de la celula (1, 1) până la celula (i, j), ceea ce înseamnă că răspunsul pe care-l vom cauta se va afla chiar în <b>par[x][y]</b>.<br>
+            &emsp;&emsp;Codul pentru acest algoritm ar fi:
+            
+            <div class="code">
+                <div class="colCyan">int</div> di[4] = {-1, 0, 1, 0}; 
+                <div class="colComment">&emsp;&emsp; // <i>deplasarea intre linii</i></div><br>
+                <div class="colCyan">int</div> dj[4] = {0, 1, 0, -1}; 
+                <div class="colComment">&emsp;&emsp; // <i>deplasarea intre coloane</i></div> <br>
+                <br>
+                <div class="colCyan">bool</div> OK(<div class="colCyan">int</div> i, <div class="colCyan">int</div> j){ 
+                <div class="colComment">&emsp;&emsp; // <i>functia verifica daca celula (i, j) este o pozitie valida</i></div><br>
+                &emsp;&emsp; <div class="colRed">if</div>(i < 1 <div class="colRed">||</div> j < 1 <div class="colRed">||</div> i > N <div class="colRed">||</div> j > M) 
+                <div class="colComment">&emsp;&emsp; // <i>verifica daca i si j nu ies din tablou</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp; <div class="colRed">return</div> <div class="colPurple">false</div>; <br>
+                    &emsp;&emsp; <div class="colRed">if</div>(v[i][j])
+                        <div class="colComment">&emsp;&emsp; // <i>verifica daca celula (i, j) contine un lac de lava</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp; <div class="colRed">return</div> <div class="colPurple">false</div>; <br>
+                    &emsp;&emsp; <div class="colRed">return</div> <div class="colPurple">true</div>; <br>
+                } <br>
+                <br>
+                <div class="colCyan">void</div> lee(){<br>
+                &emsp;&emsp; <div class="colGreen">queue</div> <div class="colRed">&#60;</div> <div class="colGreen">pair</div> <div class="colRed">&#60;</div> <div class="colCyan">int</div>, <div class="colCyan">int</div> <div class="colRed">> ></div> Q; 
+                <div class="colComment">&emsp;&emsp; // <i>initializam coada in care vom tine perechile de pozitii</i></div><br>
+                    &emsp;&emsp; Q.<div class="colGreen">push</div>({1 ,1}); 
+                    <div class="colComment">&emsp;&emsp; // <i>adaugam in coada celula de plecare</i></div><br>
+                    &emsp;&emsp; par[1][1] <div class="colRed">=</div> 1;
+                    <div class="colComment">&emsp;&emsp; // <i>initializam celula pe care plecam cu 1</i></div><br>
+                    &emsp;&emsp; <div class="colRed">while</div>(!Q.empty()){ 
+                    <div class="colComment">&emsp;&emsp; // <i>cat timp coada nu este goala, adica cat timp n-am vizitat toate perechile de pozitii existente</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp;
+                        <div class="colGreen">pair</div> <div class="colRed">&#60;</div> <div class="colCyan">int</div>, <div class="colCyan">int</div> <div class="colRed">> </div> pos <div class="colRed">=</div> Q.<div class="colGreen">front</div>(); 
+                        <div class="colComment">&emsp;&emsp; // <i>pos ia perechea de pozitii din capatul frontal al coadei</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp;
+                        Q.<div class="colGreen">pop</div>(); 
+                        <div class="colComment">&emsp;&emsp; // <i>stergem elementul pe care l-am extras</i></div><br>
+                        &emsp;&emsp;&emsp;&emsp;
+                        <div class="colRed">for</div>(<div class="colCyan">int</div> d <div class="colRed">=</div> 0; d <div class="colRed"><</div> 4; d<div class="colRed">++</div>){ 
+                        <div class="colComment">&emsp;&emsp; // <i>parcurgem cele 4 cazuri de deplasare</i></div><br> 
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <div class="colCyan">int</div> i <div class="colRed">=</div> pos.<div class="colGreen">first</div> <div class="colRed">+</div> di[d]; 
+                            <div class="colComment">&emsp;&emsp; // <i>valoarea liniei vecine</i></div><br>
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <div class="colCyan">int</div> j <div class="colRed">=</div> pos.<div class="colGreen">second</div> <div class="colRed">+</div> dj[d]; 
+                            <div class="colComment">&emsp;&emsp; // <i>valoarea coloanei vecine</i></div><br> 
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <div class="colRed">if</div>(OK(i, j) <div class="colRed">&&</div> par[pos.<div class="colGreen">first</div>][pos.<div class="colGreen">second</div>] <div class="colRed">+</div> 1 <div class="colRed">> </div> par[i][j]){ 
+                            <div class="colComment">&emsp;&emsp; // <i>verificam daca celula vecina sa fie valida</i></div><br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                par[i][j] <div class="colRed">=</div> par[pos.<div class="colGreen">first</div>][pos.<div class="colGreen">second</div>] <div class="colRed">+</div> 1; 
+                                <div class="colComment">&emsp;&emsp; // <i>celula vecina ia valoarea casutei actuale + 1</i></div><br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                Q.<div class="colGreen">push</div>({i, j}); 
+                                <div class="colComment">&emsp;&emsp; // <i>adaugam noua pereche de pozitii in coada</i></div><br>
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            } <br>
+                        &emsp;&emsp;&emsp;&emsp;
+                        } <br>
+                    &emsp;&emsp;} <br>
+                } <br>
+                <br> 
+                <div class="colCyan">int</div> main(){ <br>
+                    &emsp;&emsp;read();<br>
+                    &emsp;&emsp;<div class="colRed">for</div>(<div class="colCyan">int</div> i <div class="colRed">=</div> 1; i <div class="colRed"><=</div> N; i<div class="colRed">++</div>) <br>
+                        &emsp;&emsp;&emsp;&emsp;
+                        <div class="colRed">for</div>(<div class="colCyan">int</div> j <div class="colRed">=</div> 1; j <div class="colRed"><=</div> M; j<div class="colRed">++</div>) <br>
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            par[i][j] <div class="colRed">=</div> 2e9; 
+                            <div class="colComment">&emsp;&emsp; // <i>initializam matricea par cu o valoare foarte mare</i></div><br>
+                    &emsp;&emsp;lee(); 
+                    <div class="colComment">&emsp;&emsp; // <i>accesam functia care rezolva problema</i></div><br>
+                    &emsp;&emsp;<div class="colGreen">cout</div> <div class="colRed"><<</div> par[x][y]; 
+                    <div class="colComment">&emsp;&emsp; // <i>afisam lungimea drumului pana la celula (x, y)</i></div><br>
+                    <br>
+                    &emsp;&emsp;<div class="colRed">return</div> <div class="colPurple">0</div>; <br>
+                }
+            </div>
+        
+        &emsp;&emsp;Mai jos este o reprezentare grafică a modului cum funcționează algoritmul, dumnevoastră putând introduce orice test doriți atât timp cât respectă cerințele ca testul să fie valid. În reprezentarea grafică, prima linia și prima coloana reprezintă pozițiile, valoarea <b>-1</b> reprezintă o căsuța care nu este accesibilă, o valoare cu culoarea galbenă reprezintă poziția la care am ajuns în momentul curent, o valoare cu culoare verde reprezintă vecinii care îndeplinesc condițiile impuse de noi pentru deplasare, iar valoarea cu mov reprezintă celula la care trebuie să ajungem.
+        
+            <div class="myGraph">
+                <textarea id="inputTest" class="inputTest" cols="40" rows="5">8 8 8 7&#13;0 0 1 0 1 1 0 1&#13;0 0 1 1 0 0 0 1&#13;0 1 1 0 0 1 0 0&#13;0 0 0 0 0 1 0 1&#13;1 1 1 1 1 0 0 0&#13;0 0 1 0 0 0 0 1&#13;0 0 1 0 1 1 1 1&#13;0 0 0 0 0 0 0 0
+                </textarea>  
+                
+                <div>
+                    <button id="runTestButton" class="runTestButton" onclick="runTest(this)">Run</button>
+                </div>
+                
+                <div class="myTables">
+                    <table id="inputTable" class="inputTable">
+                        <tr>
+                            <td>par</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nextPage">
+            <a href="../Problem%20D/binSearch.html">Next Page</a>
+        </div>
+    </div>
+</body>

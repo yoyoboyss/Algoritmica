@@ -1,0 +1,113 @@
+<head>
+    <title>
+        Algoritmul lui Lee
+    </title>
+    
+    <link rel="stylesheet" href="..\..\CSS\menu.css">
+    <link rel="stylesheet" href="..\..\CSS\task.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/littleSon.js"></script>
+</head>
+
+<body onload="matGenerate()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Fiul cel mic</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;<b>Poveste</b></div>
+        <div>
+            &emsp;&emsp;După ce a reușit să obțină cu succes cheia spre a deveni împărat, feciorul nostru începe să-și pună planu în aplicare. După ani și ani de zile, feciorul nostru reușește să pună bazele unui imperiu, un imperiu atât de mare încât se întindea pe 7 continente fiind numit Greenland, iar feciorul nostru devenind astfel Împăratul Verde, având alături de el 3 fii. Deoarece Împăratului nostru îi plăcea să călătorească, într-o seară a plecat într-o călătorie îndelungă. A trecut mari, a trecut oceane, a trecut munți, apoi într-un final și-a croit drum acasă, ajuns în față castelului său uriaș, apare soția să plângând care-l informează că Gnobul Magic a fost furat de un bărbat îmbrăcât în haine negre, purtând o pălărie neagră. Furios, împăratul pune cei 3 fii ai lui să caute Gnobul magic. Primii 2 fii au fost plecați ani de zile, dar din păcate s-au întors dezamăgiți acasă, însă, fiul cel mai mic, pe nume Denis Crînganu, cel mai curajos, viteaz și voinic dintre toți fii, ia sarcina tatălui și pleacă în căutare. După ce a traversat 7 continente, 7 mări, 7 munți și 7 țări, întâlnește un tip îmbrăcat în negru cu pălărie neagră care-l teleportează pe fiul cel mic într-o lume numită Nether, ce poate fi reprezentată că o matrice cu <b>N</b> linii și <b>M</b> coloane, fiecare celulă având suprafață de 1m<sup>2</sup>. La început, fiul cel mic se află pe linia 1 coloana 1 și este nevoit să ajungă pe linia <b>X</b>, coloana <b>Y</b> pentru a putea trece prin portalul către lumea reală, însă în Nether se află lacuri de lavă prin care fiul nu poate trece. Fiul cel mic se va putea deplasa doar la N, E, S sau V, adică în una dintre celulele alăturate celei pe care se află la un moment dat și nu va depăși niciodată limitele lumei. Disperat să iasă cât mai repede din lumea asta ciudată, Denis vă cere să-i spuneți care este lungimea minimă a drumului pe care trebuie să-l parcurgă până la portalul către lumea reală.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Cerință</b></div>
+        <div>
+            &emsp;&emsp;Dându-se patru numere naturale N, M, x, y și un tablou bidimensional cu N linii și M coloane, calculați care este lungimea minimă a traseului de la celula (1, 1) până la celula (x, y). Dacă o valoare din tablou este 0, atunci fiul cel mic poate trece pe acea suprafață, iar dacă o valoare din tablou este 1, atunci acolo se află un lac de lavă, iar fiul nu poate să se deplaseze în celula respectivă.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de intrare</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de intrare <u><i>fiu.in</i></u> conține pe prima linie patru numere naturale N, M, x respectiv y. Pe urmatoarele linii va fi descris taboul bidimensional care consta din N linii a cate M coloane conform cerintei.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de ieșire</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de ieșire <u><i>fiu.out</i></u> va conține lungimea minimă a tresului de la celula (1, 1) până la celula (x, y).
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Restricții</b></div>
+        <div>
+            <ul>
+                <li>1 &#8804; N, M &#8804; 500;</li>
+                <li>0 &#8804; v[i][j] &#8804; 1, unde v[i][j] este elementul tabloului de pe linia i coloana j;</li>
+                <li>Fiul se va deplasa doar pe harta lumii pe care o are;</li>
+                <li>Se garantează că întotdeauna există o calea de a ajunge din celula (1, 1) până în celula (x, y) respectând regulile impuse;</li>
+            </ul>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Exemplu</b></div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>fiu.in</th>
+                    <th>fiu.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        8 8 8 7 <br>
+                        0 0 1 0 1 1 0 1 <br> 
+                        0 0 1 1 0 0 0 1 <br>
+                        0 1 1 0 0 1 0 0 <br>
+                        0 0 0 0 0 1 0 1 <br>
+                        1 1 1 1 1 0 0 0 <br>
+                        0 0 1 0 0 0 0 1 <br>
+                        0 0 1 0 1 1 1 1 <br>
+                        0 0 0 0 0 0 0 0
+                        
+                    </th>
+                    <th>
+                        23
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Explicare</b></div>
+        <div>
+            &emsp;&emsp;O soluție pentru acest test ar fi:<br>
+            <table id="littleSonTable" class="littleSonTable"></table>
+        </div>
+        
+        <div class="nxtPage">
+            <a href="descriere.html" class="nextPage">Descrierea soluției</a>
+        </div>
+    </div>
+</body>
