@@ -1,0 +1,166 @@
+<head>
+    <title>
+        Descriere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/Problem%20A/partialSum.css">
+    <link rel="stylesheet" href="..\..\CSS\menu.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/partialSumA.js"></script>
+</head>
+
+<body onload="Update()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descrierea solutiei</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;Solutia O(N * Q)</div>
+        <div>
+            &emsp;&emsp;O prima solutie a acestei probleme presupune retinerea unei variabile <b>sum</b> in care vom tine suma elementelor intre pozitia <i>x</i> si <i>y</i>. La fiecare intrebare vom initial variabila <b>sum</b> cu <u>0</u> dupa care vom parcurge sirul de valori incepand de pozitia <i>x</i> pana la pozitia <i>y</i>, iar la fiecare pozitie pe care o vizitam vom incrementa <b>sum</b> cu valoarea pozitiei respective din vector. Deoarece suma elementelor vectorului poate depasi 2<sup>31</sup>, se recomanda folosirea tipului de variabila <i>long long</i>.Din care ca in cel mai rau caz lungimea subsecventei pe care o vizitam poate avea valoare N si exista Q intrebari, complexitate pentru acest algoritm este O(N * Q). Deoarece N si Q pot aveam valoare 100 000, complexitatea ar fi prea mare si i-ar lua procesului un timp prea indelungat pentru a procesa un asemenea test.<br>
+            &emsp;&emsp;Codul sursa pentru o asemenea rezolvare ar fi:
+        </div>
+        
+        <div class="code">
+            <div class="colCyan">int</div> x, y;<br>
+            <div class="colCyan">long long</div> sum; <br>
+            <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> q <div class="colRed">=</div> 1; q <div class="colRed"><=</div> Q; q<div class="colRed">++</div><div class="colYellow">){</div>
+            <div class="colYellow">&emsp;//</div> luam pe rand cele Q intrebari pentru a raspunde la ele<br>
+                &emsp;&emsp; sum <div class="colRed">=</div> <div class="colPurple">0</div>; 
+            <div class="colYellow">&emsp;//</div> initializam variabila sum cu 0<br>
+            &emsp;&emsp; <div class="colGreen">cin</div> <div class="colRed">>></div> x <div class="colRed">>></div> y;
+            <div class="colYellow">&emsp;//</div> citim pozitiile intre care vrem sa aflam suma elementelor <br>
+                &emsp;&emsp; <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> i <div class="colRed">=</div> x; i <div class="colRed"><=</div> y; i<div class="colRed">++</div><div class="colYellow">)</div> 
+                <div class="colYellow">&emsp;//</div> parcurgem elementele aflate intre pozitiile x si y<br>
+                    &emsp;&emsp;&emsp;&emsp; sum <div class="colRed">+=</div> v[i]; 
+                    <div class="colYellow">&emsp;//</div> adunam valoarea pozitiei pe care am vizitat-o in variabila sum<br>
+                &emsp;&emsp; <div class="colGreen">cout</div> <div class="colRed"><<</div> sum <div class="colRed"><<</div> <div class="colPurple">'\n'</div>; 
+                <div class="colYellow">&emsp;//</div> afisam suma elementelor aflate intre pozitia x si y<br>
+            <div class="colYellow">}</div>
+        </div>
+            
+        <div>
+            &emsp;&emsp;O reprezentare grafica a acestui algoritm se gaseste mai jos, considerand exemplul din problema:    
+        </div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>partialsum.in</th>
+                    <th>partialsum.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        8 5<br>
+                        5 2 -3 2 6 3 -1 9<br>
+                        1 5<br>
+                        3 7<br>
+                        2 8<br>
+                        5 5<br>
+                        4 8
+                    </th>
+                    <th>
+                        12<br>
+                        7<br>
+                        18<br>
+                        6<br>
+                        19
+                    </th>
+                </tr>
+            </table>
+        </div>
+            
+        <div>
+            <div class="vectorButtonCenter">
+                <button id="vectorIdButton" class="vectorButton" onclick="doSth(this)">Run</button>
+            </div>
+            
+            <table id="vectorTable" class="vectorTable">
+                <tr>
+                    <th>pos</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                </tr>
+                <tr>
+                    <th>v</th>
+                    <th>5</th>
+                    <th>2</th>
+                    <th>-3</th>
+                    <th>2</th>
+                    <th>6</th>
+                    <th>3</th>
+                    <th>-1</th>
+                    <th>9</th>
+                </tr> 
+            </table>
+            
+            <div class="variabiles">
+                <div id="varX" class="varX">
+                    x = 0
+                </div>
+                <div id="varY" class="varY">
+                    y = 0
+                </div>
+                <div id="varSum" class="varSum">
+                    sum = 0
+                </div>
+            </div>
+        </div>
+            
+        <div class="solOptim">
+            <a href="descriereOptim.html">Solutia optima</a>    
+        </div>
+    </div>
+</body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

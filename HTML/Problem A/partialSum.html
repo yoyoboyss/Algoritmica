@@ -1,0 +1,113 @@
+<head>
+    <title>
+        Sume parțiale 1D
+    </title>
+    
+    <link rel="stylesheet" href="..\..\CSS\task.css">
+    <link rel="stylesheet" href="..\..\CSS\menu.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Începutul</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;<b>Poveste</b></div>
+        <div>
+            &emsp;&emsp;Totul începe într-o frumoasă zi de vară într-un ținut foarte îndepărtat, un fecior viteaz, curajos și călător de fire pronise într-o aventură prin pădure. După ce feciorul a mers timp de 3 zile și 3 nopți prin pădure, ajunge la poartă unui castel abandonament unde îndrăznește să între înăuntru, dar nimeni nu era acolo cu excepția unui singur lucru, pe tronul unde stătea regele cândva se află un cufăr de dimensiuni medii, placat cu aur ce strălucea foarte tare. Curios de fire, feciorul nostru apucă cufărul și începe să-l analizezi, observând astfel ceva foarte ciudat scris pe el. Pe cufăr era scris un șir de <b>N</b> numere întregi, iar cerință era să se răspundă la <b>Q</b> întrebări de formă: care este suma elementelor cuprinse între poziția <b>x</b> și <b>y</b> . Feciorul, din cauza că nu prea i-a plăcut să treacă pe la orele de informatică în liceu, vrând neapărat să știe ce se află în cufăr, va cere vouă ajutorul și vă promite că va împărți cu voi ceea ce se află în cufăr.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Cerinta</b></div>
+        <div>
+            &emsp;&emsp;Dandu-se un sir cu <b>N</b> numere intregi, raspundeti la <b>Q</b> intrebari de forma: care este suma elementelor cuprinse intre pozitia <b>x</b> si <b>y</b> .
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de intrare</b></div>
+        <div>
+            &emsp;&emsp;Fisierul de intrare <u><i>partialsum.in</i></u> contine pe prima linie 2 numere N si Q cu semnificatiile din enunt. Pe urmatoarea linie vor fi scrise N numere intregi resprezentand sirul. Pe urmatoarele Q linii vor fi descrise intrebarile, a i-a linie continand 2 numere intregi x si y cu semnificatiile din enunt.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de iesire</b></div>
+        <div>
+            &emsp;&emsp;Fisierul de iesire <u><i>partialsum.out</i></u> va contine Q linii, a i-a linie semnificand raspunsul pentru a i-a intrebare.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Restrictii</b></div>
+        <div>
+            <ul>
+                <li>1 &#8804; N, Q &#8804; 100 000;</li>
+                <li>-1 000 000 000 &#8804; v[i] &#8804; 1 000 000 000, unde v[i] este element al sirului;</li>
+                <li>1 &#8804; x &#8804; y &#8804; N.</li>
+            </ul>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Exemplu</b></div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>partialsum.in</th>
+                    <th>partialsum.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        8 7<br>
+                        5 2 -3 2 6 3 -1 9<br>
+                        1 5<br>
+                        3 7<br>
+                        2 8<br>
+                        5 5<br>
+                        4 8
+                    </th>
+                    <th>
+                        12<br>
+                        7<br>
+                        18<br>
+                        6<br>
+                        19
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Explicare</b></div>
+        <div>
+            &emsp;&emsp;Pentru prima intrebare se cere suma elementelor aflate intre pozitiile <u>1</u> si <u>5</u>, care este 5 + 2 + (-3) + 2 + 6 = 12.<br>
+            &emsp;&emsp;Pentru a doua intrebare se cere suma elementelor aflate intre pozitiile <u>3</u> si <u>7</u>, care este -3 + 2 + 6 + 3 + (-1) = 7.
+        </div>
+        
+        <div class="nxtPage">
+            <a href="descriere.html" class="nextPage">Descrierea solutiei</a>
+        </div>
+    </div>
+    
+</body>

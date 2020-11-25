@@ -1,0 +1,142 @@
+<head>
+    <title>
+        Descriere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/Problem%20A/partialSum.css">
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/showArray.js"></script>
+</head>
+
+<body onload="setInterval(Update, 1000)">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="partialSum.html">A) Sume parțiale 1D</a>
+                <a href="../Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descrierea solutiei</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;Solutia O(Q)</div>
+        <div>
+            &emsp;&emsp;Pentru a putea rezolva problema intr-un timp optim, trebuie sa ne gandim cum putem raspunde la o intrebare intr-un timp cat mai scurt. Pentru a putea raspunde la o intrebare intr-un timp cat mai scurt exista mai multe metode, dar de aceasta data vom folosi notiunea de sume partiale.<br>
+            &emsp;&emsp;Sumele partiale reprezinta o metoda prin care putem determina intr-o complexitate O(1) care este suma elementelor pe un anumit interval. Exista sume partiale aplicate pe tablouri unidimensionale, bidimensionate, tridimensionate, etc... In problema actuala trebuie sa aplicam sume partiale 1D, adica pe un tablou unidimensional.<br>
+            &emsp;&emsp;Consideram vectorul din exemplul problemei:
+            
+            <div class="imgVector">
+                <img src="../../Images/sumPartialVector.jpg" width=50%>
+            </div>
+            
+            &emsp;&emsp;Vom tine un vector <b>sum[i]</b> care va fi egal cu suma primelor <b>i</b> elemente. Pentru a putea crea acest vector, vom initializa vectorul <b>sum</b> global pentru ca toate valorile din vector sa fie 0, dupa care vom incepe parcurgerea celor <b>N</b> elemente din vectorul de elemente din test. Pentru a calcula <b>sum[i]</b> avem nevoie de o relatie de recurenta care este <i>sum[i] = sum[i - 1] + v[i]</i>, deoarece <b>sum[i]</b> contine suma primelor <b>i</b> elemente, atunci <b>sum[i - 1]</b> contine suma primelor <b>i - 1</b> la care mai adaugam valorea pozitie curent, adica <b>v[i]</b>. Conform exemplului nostru, vectorul <b>sum</b> ar arata asa:
+            
+            <div class="imgVector">
+                <img src="../../Images/sumPartialSum.jpg" width=50%>
+            </div>
+            
+            &emsp;&emsp;Acum observam ca daca am avea o intrebare de genu: "Care este suma elementelor pe intervalul 1 y", atunci raspunsu ar fi chiar sum[y], deoarece el reprezinta suma primelor y elemente. Totusi, cum putem raspunde la orice fel de intrebare de forma: "Care este suma elementelor pe intervalul x y". Stim ca sum[y] este suma primelor y elemente, doar ca din aceasta suma cateva elemente sunt in plus, si anume primele x-1 elemente, ceea ce inseamna ca din suma primelor y elemente scadem suma primelor x - 1 elemente. Mai exact, raspunsul pentru o intrebare va fi <i>sum[y] - sum[x - 1]</i> care are complexitate O(1) pentru fiecare intrebare, astfel complexitatea intregului program se reduce la O(Q). Din cauza ca suma elementelor vectorului poate depasi 2<sup>31</sup>, se recomanda folosirea tipului de variabila <i>long long</i> pentru initializarea vectorului <b>sum</b>. Cu toate ca acest algoritm nu suporta schimbari in vectorul nostru, este unul dintre algoritmii fundamentali ai informaticii ce poate ajuta in multe probleme.<br>
+            &emsp;&emsp;Codul pentru un asemenea algoritm ar fi:
+            
+            <div class="code">
+                <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> i <div class="colRed">=</div> 1; i <div class="colRed"><=</div> N; i<div class="colRed">++</div><div class="colYellow">)</div><br>
+                    &emsp;&emsp;sum[i] <div class="colRed">=</div> sum[i <div class="colRed">-</div> 1] <div class="colRed">+</div> v[i];
+                <div class="colYellow">&emsp;//</div> calculam suma primelor i elemente<br>
+                
+                <div class="colCyan">int</div> x, y; <br>
+                <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> q <div class="colRed">=</div> 1; q <div class="colRed"><=</div> Q; q<div class="colRed">++</div><div class="colYellow">){</div>
+                <div class="colYellow">&emsp;//</div> luam pe rand cele Q intrebari pentru a raspunde la ele<br>
+                &emsp;&emsp; <div class="colGreen">cin</div> <div class="colRed">>></div> x <div class="colRed">>></div> y;
+                <div class="colYellow">&emsp;//</div> citim pozitiile intre care vrem sa aflam suma elementelor <br>
+                    &emsp;&emsp; <div class="colGreen">cout</div> <div class="colRed"><<</div> sum[y] <div class="colRed">-</div> sum[x <div class="colRed">-</div> 1] <div class="colRed"><<</div> <div class="colPurple">'\n'</div>; 
+                    <div class="colYellow">&emsp;//</div> afisam suma elementelor aflate intre pozitia x si y<br>
+                <div class="colYellow">}</div>
+            </div>
+            
+            &emsp;&emsp;Reprezentare grafica a acestui algoritm ar fi si un debugger pentru a vedea in timp real valorile corespunzatoare, unde puteti scrieti dumnevoastra testele pe care vreti sa le executati si sa verificati cum decurge algrotimul, testele trebuie scrise conform enuntului problemei. Linia <b>pos</b> reprezinta pozitiile, notate de la 1 la N, linia <b>v</b> reprezinta vectorul pe care se executa algoritmul, iar <b>sum</b> reprezinta vectorul se sume partiale. Pe linia <b>sum</b> ce este colorat in verde se aduna, dupa care ce este colorat in rosu se scade;
+            
+            <div class="graph">
+                <textarea id="inputTest" class="inputTest" cols="40" rows="5">8 5&#13;5 2 -3 2 6 3 -1 9&#13;1 5&#13;3 7&#13;2 8&#13;5 5&#13;4 8
+                </textarea>   
+                
+                <div>
+                    <button id="runTestButton" class="runTestButton" onclick="executeTest(this)">Run</button>
+                </div>
+                
+                <div id="myVector" class="myVector">
+                    <table id="vectorTable" class="vectorTable">
+                        <tr>
+                            <th>pos</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                        </tr>
+                        <tr>
+                            <th>v</th>
+                            <th>5</th>
+                            <th>2</th>
+                            <th>-3</th>
+                            <th>2</th>
+                            <th>6</th>
+                            <th>3</th>
+                            <th>-1</th>
+                            <th>9</th>
+                        </tr> 
+                        <tr>
+                            <th>sum</th>
+                            <th>5</th>
+                            <th>7</th>
+                            <th>4</th>
+                            <th>6</th>
+                            <th>12</th>
+                            <th>15</th>
+                            <th>14</th>
+                            <th>23</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="variabiles">
+                    <div id="varX">x = 0</div>
+                    <div id="varY">y = 0</div>
+                    <div id="varSumY">sum[y] = sum[0] = 0</div>
+                    <div id="varSumX">sum[x - 1] = sum[0] = 0</div>
+                    <div id="varAns">ans = sum[y] - sum[x - 1] = 0</div>
+                </div>
+            </div>
+        </div>
+                
+        <div class="nextPage">
+            <a href="../Problem%20B/binNumber.html">Next Page</a>
+        </div>
+    </div>
+    
+</body>
