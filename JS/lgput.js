@@ -39,7 +39,7 @@ function runCommand(objButton){
 }
 
 function doStart(){
-    var interval = setInterval(Update, 50);
+    var interval = setInterval(Update, 700);
 }
 
 function lgpow(){
