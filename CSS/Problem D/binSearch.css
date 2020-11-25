@@ -1,0 +1,146 @@
+body{
+    background-color: rgba(10, 10, 10, 1);
+}
+
+h1{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 190%;
+    text-align: center;
+}
+
+.text{
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    background-color: rgba(31, 31, 31, 1);
+    font-size: 120%;
+    padding: 2vh 2vw;
+    border-style: solid;
+    border-color: dimgray;
+    border-width: 2px;
+    margin: 1vh 0.5vw;
+}
+
+.par{
+    font-size: 130%;
+    margin-bottom: 1.5%;
+}
+
+.code{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: rgba(10, 10, 10, 1);
+    padding: 2vh 3vw;
+    border: solid white 1px;
+}
+
+.colRed{
+    color: rgba(226, 29, 29, 1);
+    display: inline;
+}
+
+.colCyan{
+    color: rgba(28, 207, 217, 1);
+    display: inline;
+}
+
+.colPurple{
+    color: rgba(113, 28, 217, 1);
+    display: inline;
+}
+
+.colGreen{
+    color: rgba(18, 181, 13, 1);
+    display: inline;
+}
+
+.colYellow{
+    color: yellow;
+    display: inline;
+}
+
+.colComment{
+    color: grey;
+    display: inline;
+}
+
+.runTestButton{
+    background-color: rgba(10, 10, 10, 1);
+    color: white;
+    border: solid white 2px;
+    padding: 0.6% 0.5%;
+    font-size: 125%;
+    margin: 1vh 0;
+    width: 5%;
+    margin-left: 47.5%;
+}
+
+.inputTest{
+    background-color: rgba(10, 10, 10, 1);
+    color: white;
+    text-align: left;
+    margin-top: 1%;
+    width: 100%;
+    height: 30%;
+    resize: none;
+    font-size: 125%;
+    padding: 0.7% 1%;
+}
+
+.inputTable{
+    color: white;
+    font-size: 150%;
+    margin: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table tr td{
+    padding: 0.5vh 0.3vw;
+}
+
+.myTable{
+    background-color: rgba(10, 10, 10, 1);
+    padding: 2vh 1vw;
+    border: solid dimgray 2px;
+    overflow-x: auto;
+    height: 50%;
+}
+
+.myDebug{
+    text-align: center;
+    border: solid darkgray 2px;
+    padding: 0.5% 1%;
+}
+
+.nextPage{
+    margin: 2% 0% 1% 85%;
+    font-family: inherit;
+}
+
+.nextPage a{
+    color: white;
+    background-color: rgba(25, 25, 25, 1);
+    text-decoration: none;
+    border: solid white 2px;
+    padding: 2vh 1vw;
+    font-size: 110%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
