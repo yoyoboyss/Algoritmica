@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Test
+    </title>
+    
+    <link rel="stylesheet" href="../CSS/test.css">
+    <link rel="stylesheet" href="../CSS/menu.css">
+    
+    <script src="../JS/dropMenu.js"></script>
+    <script src="../JS/test.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="Problem%20B/binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>
+        Test
+    </h1>
+    
+    <div class="text">
+        <div class="subject">
+            &emsp;&emsp;Subiectul I. Sume partiale 1D.
+        </div>
+        
+        <div class="query">
+            1. Unde ajunge feciorul dupa ce a plecat in calatorie prin padure?
+        </div>
+        <div class="answer">
+            <input id="S1Q1A1" type="radio" name="S1Q1">Acasa <br>
+            <input id="S1Q1A2" type="radio" name="S1Q1">La un rege <br>
+            <input id="S1Q1A3" type="radio" name="S1Q1">In Nether <br>
+            <input id="S1Q1A4" type="radio" name="S1Q1">La poarta unui castel
+        </div>
+        
+        <div class="query">
+            2. Ce gaseste feciorul pe tronul unde statea regele?
+        </div>
+        <div class="answer">
+            <input id="S1Q2A1" type="radio" name="S1Q2">Cheia spre a deveni nemuritor <br>
+            <input id="S1Q2A2" type="radio" name="S1Q2">Un cufar <br>
+            <input id="S1Q2A3" type="radio" name="S1Q2">Un bilet de la rege<br>
+            <input id="S1Q2A4" type="radio" name="S1Q2">Aur si diamante
+        </div>
+        
+        <div class="query">
+            3. Suporta sumele partiale modificari asupra valorilor din vector in timpul executiei programului?
+        </div>
+        <div class="answer">
+            <input id="S1Q3A1" type="radio" name="S1Q3">Nu <br>
+            <input id="S1Q3A2" type="radio" name="S1Q3">Da <br>
+            <input id="S1Q3A3" type="radio" name="S1Q3">Doar daca numarul elementelor este par<br>
+            <input id="S1Q3A4" type="radio" name="S1Q3">Doar daca elementele sunt numere pozitive
+        </div>
+        
+        <div class="query">
+            4. Ce complexitate au sumele partiale conform problemei propuse?
+        </div>
+        <div class="answer">
+            <input id="S1Q4A1" type="radio" name="S1Q4">O(N) <br>
+            <input id="S1Q4A2" type="radio" name="S1Q4">O(N * Q) <br>
+            <input id="S1Q4A3" type="radio" name="S1Q4">O(Q * log<sub>2</sub>N)<br>
+            <input id="S1Q4A4" type="radio" name="S1Q4">O(N + Q)
+        </div>
+        
+        <div class="query">
+            5. Care este raspunsul pentru urmatorul test?
+            <textarea id="inputTest" class="inputTest" cols="40" rows="5">10 2 &#13;5 2 -3 7 3 10 -9 1 0 -5 &#13;1 10 &#13;5 7</textarea>
+        </div>
+        <div class="answer">
+            <input id="S1Q5A1" type="radio" name="S1Q5">10 si 4 <br>
+            <input id="S1Q5A2" type="radio" name="S1Q5">9 si 5 <br>
+            <input id="S1Q5A3" type="radio" name="S1Q5">11 si 4<br>
+            <input id="S1Q5A4" type="radio" name="S1Q5">11 si 5
+        </div>
+        
+        <div class="subject addSpaceTop">
+            &emsp;&emsp;Subiectul II. Reprezentarea binara a unui numar.
+        </div>
+        
+        <div class="query">
+            1. Ce gaseste feciorul in cufarul deschis?
+        </div>
+        <div class="answer">
+            <input id="S2Q1A1" type="radio" name="S2Q1">Un Gnob <br>
+            <input id="S2Q1A2" type="radio" name="S2Q1">O scrisoare <br>
+            <input id="S2Q1A3" type="radio" name="S2Q1">Bogatii <br>
+            <input id="S2Q1A4" type="radio" name="S2Q1">Cheia catre un alt cufar
+        </div>
+        
+        <div class="query">
+            2. Care erau puterile Gnobului Magic?
+        </div>
+        <div class="answer">
+            <input id="S2Q2A1" type="radio" name="S2Q2">Oferea nemurire <br>
+            <input id="S2Q2A2" type="radio" name="S2Q2">Dubla obiecte, Gnobul nu se termina niciodata <br>
+            <input id="S2Q2A3" type="radio" name="S2Q2">Era un portal catre o alta lumea misterioasa <br>
+            <input id="S2Q2A4" type="radio" name="S2Q2">Era un Gnob fals
+        </div>
+        
+        <div class="query">
+            3. Baza 2 contine doar numerele:
+        </div>
+        <div class="answer removeSpaceLeft">
+            <input id="S2Q3A1" type="radio" name="S2Q3">1 si 2 <br>
+            <input id="S2Q3A2" type="radio" name="S2Q3">0 si 2<br>
+            <input id="S2Q3A3" type="radio" name="S2Q3">0 si 1 <br>
+            <input id="S2Q3A4" type="radio" name="S2Q3">0, 1 si 2
+        </div>
+        
+        <div class="query">
+            4. Baza numar in baza 2 poate fi in baza 10 ca:
+        </div>
+        <div class="answer removeSpaceLeft">
+            <input id="S2Q4A1" type="radio" name="S2Q4">o produs de puteri a lui 2 si 3 <br>
+            <input id="S2Q4A2" type="radio" name="S2Q4">10 la puterea numarul binar<br>
+            <input id="S2Q4A3" type="radio" name="S2Q4">un produs de puteri a lui 2 <br>
+            <input id="S2Q4A4" type="radio" name="S2Q4">o suma de puteri a lui 2
+        </div>
+        
+        <div class="query">
+            5. Reprezentarea binara numarul zecimal 5318008 este:
+        </div>
+        <div class="answer removeSpaceLeft">
+            <input id="S2Q5A1" type="radio" name="S2Q5">10100010010010101111000<br>
+            <input id="S2Q5A2" type="radio" name="S2Q5">100010011011101111000<br>
+            <input id="S2Q5A3" type="radio" name="S2Q5">11000100101101100101111010<br>
+            <input id="S2Q5A4" type="radio" name="S2Q5">1111010010110101010100111010
+        </div>
+        
+        
+        <div class="subject addSpaceTop">
+            &emsp;&emsp;Subiectul III. Algoritmul lui Lee.
+        </div>
+        
+        <div class="query">
+            1. Ce se intampla cu feciorul?
+        </div>
+        <div class="answer">
+            <input id="S3Q1A1" type="radio" name="S3Q1">Devine imparatul din Nether <br>
+            <input id="S3Q1A2" type="radio" name="S3Q1">Nu mai aflam nimic despre el <br>
+            <input id="S3Q1A3" type="radio" name="S3Q1">Devine imparat peste cele 7 continente <br>
+            <input id="S3Q1A4" type="radio" name="S3Q1">Devine Imparatul Verde ce domnea asupra tinutului GreenLand
+        </div>
+        
+        <div class="query">
+            2. Ce se intampla cu Gnobul Magic?
+        </div>
+        <div class="answer">
+            <input id="S3Q2A1" type="radio" name="S3Q2">Se sparge <br>
+            <input id="S3Q2A2" type="radio" name="S3Q2">Este furat de un tip imbracat in negru <br>
+            <input id="S3Q2A3" type="radio" name="S3Q2">Fiul cel mare al imparatului il fura si fuge cu el <br>
+            <input id="S3Q2A4" type="radio" name="S3Q2">Se intoarce in locul de unde a provenit
+        </div>
+        
+        <div class="query">
+            3. Pentru a rezolva problema ne vom folosi de o structura de date numita?
+        </div>
+        <div class="answer">
+            <input id="S3Q3A1" type="radio" name="S3Q3">Queue <br>
+            <input id="S3Q3A2" type="radio" name="S3Q3">Treap <br>
+            <input id="S3Q3A3" type="radio" name="S3Q3">Stack <br>
+            <input id="S3Q3A4" type="radio" name="S3Q3">Heap
+        </div>
+        
+        <div class="query">
+            4. Pentru a efectua deplasarea ne vom folosi de:
+        </div>
+        <div class="answer">
+            <input id="S3Q4A1" type="radio" name="S3Q4">Queue <br>
+            <input id="S3Q4A2" type="radio" name="S3Q4">Matricea par <br>
+            <input id="S3Q4A3" type="radio" name="S3Q4">Vectori de deplasare <br>
+            <input id="S3Q4A4" type="radio" name="S3Q4">Eliminarea elemetenlor din queue
+        </div>
+        
+        <div class="query">
+            5. Raspunsul pentru urmatorul test este:
+            <textarea id="inputTest" class="inputTest" cols="40" rows="5">10 10 10 10 &#13;0 1 1 1 0 0 0 1 0 0 &#13;0 1 0 0 0 0 0 1 0 0 &#13;0 1 0 1 0 1 0 1 0 0&#13;0 1 0 1 0 1 0 0 0 0 &#13;0 0 0 0 0 1 0 1 1 0 &#13;1 1 1 1 1 1 0 1 0 0 &#13;0 0 0 0 0 0 0 1 0 0 &#13;1 1 1 0 1 1 1 1 0 0 &#13;0 0 1 0 1 0 0 0 1 0 &#13;0 0 0 0 0 0 1 0 0 0</textarea>
+        </div>
+        <div class="answer">
+            <input id="S3Q5A1" type="radio" name="S3Q5">24 <br>
+            <input id="S3Q5A2" type="radio" name="S3Q5">26 <br>
+            <input id="S3Q5A3" type="radio" name="S3Q5">27 <br>
+            <input id="S3Q5A4" type="radio" name="S3Q5">25
+        </div>
+        
+        
+        <div class="subject addSpaceTop">
+            &emsp;&emsp;Subiectul IV. Cautare binara.
+        </div>
+        
+        <div class="query">
+            1. Pe cine astepta imparatu sa se intoarca cu Gnobul Magic?
+        </div>
+        <div class="answer">
+            <input id="S4Q1A1" type="radio" name="S4Q1">Fiul cel mic, Denis <br>
+            <input id="S4Q1A2" type="radio" name="S4Q1">Imparatu Rosu <br>
+            <input id="S4Q1A3" type="radio" name="S4Q1">Fiul cel mare care a furat Gnobul <br>
+            <input id="S4Q1A4" type="radio" name="S4Q1">Nu mai avea sperante ca se va intoarce cineva
+        </div>
+        
+        <div class="query">
+            2. Unde este posibil sa fie Gnobul Magic?
+        </div>
+        <div class="answer">
+            <input id="S4Q2A1" type="radio" name="S4Q2">La fiul cel mic <br>
+            <input id="S4Q2A2" type="radio" name="S4Q2">La fiul cel mare care l-a furat <br>
+            <input id="S4Q2A3" type="radio" name="S4Q2">In Imparatia Rosie <br>
+            <input id="S4Q2A4" type="radio" name="S4Q2">Acasa, in debara
+        </div>
+        
+        <div class="query">
+            3. Cautarea binara merge pe un sir de numere descrecatoare?
+        </div>
+        <div class="answer">
+            <input id="S4Q3A1" type="radio" name="S4Q3">Nu <br>
+            <input id="S4Q3A2" type="radio" name="S4Q3">Da <br>
+            <input id="S4Q3A3" type="radio" name="S4Q3">Doar daca elementele sunt numere pozitive <br>
+            <input id="S4Q3A4" type="radio" name="S4Q3">Doar daca numarul elementelor este par
+        </div>
+        
+        <div class="query">
+            4. Parcurgem algoritmul de cautare binara cat timp:
+        </div>
+        <div class="answer">
+            <input id="S4Q4A1" type="radio" name="S4Q4">Capetele intervalelor sunt mai mari decat 2 <br>
+            <input id="S4Q4A2" type="radio" name="S4Q4">Am gasit elementul cautat <br>
+            <input id="S4Q4A3" type="radio" name="S4Q4">Elementul din mijloc este elementul cautat <br>
+            <input id="S4Q4A4" type="radio" name="S4Q4">Lungimea intervalului este diferita de 1
+        </div>
+        
+        <div class="query">
+            5. Rezultatul pentru testul de mai jos conform problemei propuse este:
+            <textarea id="inputTest" class="inputTest" cols="40" rows="5">10 2 &#13;2 5 9 10 12 15 21 25 30 43 &#13;16 &#13;21</textarea>
+        </div>
+        <div class="answer">
+            <input id="S4Q5A1" type="radio" name="S4Q5">NU si DA <br>
+            <input id="S4Q5A2" type="radio" name="S4Q5">DA si NU <br>
+            <input id="S4Q5A3" type="radio" name="S4Q5">DA si DA<br>
+            <input id="S4Q5A4" type="radio" name="S4Q5">NU si NU
+        </div>
+        
+        <div class="subject addSpaceTop">
+            &emsp;&emsp;Subiectul V. Ridicare la putere in timp logaritmic.
+        </div>
+        
+        <div class="query">
+            1. Ce se intampla cu Imparatu Verde?
+        </div>
+        <div class="answer">
+            <input id="S5Q1A1" type="radio" name="S5Q1">Gaseste Gnobul Magic <br>
+            <input id="S5Q1A2" type="radio" name="S5Q1">Moare dupa ce incearca un Gnob fals <br>
+            <input id="S5Q1A3" type="radio" name="S5Q1">Gaseste cheia spre nemurire <br>
+            <input id="S5Q1A4" type="radio" name="S5Q1">Se imbolnaveste si mai tarziu moare
+        </div>
+        
+        <div class="query">
+            2. Ce simbolizeaza Gnobul Magic?
+        </div>
+        <div class="answer">
+            <input id="S5Q2A1" type="radio" name="S5Q2">Este o unealta spirituala ce prealua persoane initiate si-i conduce pe drumu vietii <br>
+            <input id="S5Q2A2" type="radio" name="S5Q2">Este o unealta spirituala ce initiaza persoanele cele mai vrednice pe drumu vietii <br>
+            <input id="S5Q2A3" type="radio" name="S5Q2">Creeaza haos in inimile persoanei respective <br>
+            <input id="S5Q2A4" type="radio" name="S5Q2">Este o unealta spirituala ce ofera puteri infinite
+        </div>
+        
+        <div class="query">
+            3. Ce proprietate are modulo in raport cu inmultirea si adunarea?
+        </div>
+        <div class="answer">
+            <input id="S5Q3A1" type="radio" name="S5Q3">Distribuire <br>
+            <input id="S5Q3A2" type="radio" name="S5Q3">Asociere <br>
+            <input id="S5Q3A3" type="radio" name="S5Q3">Comutare <br>
+            <input id="S5Q3A4" type="radio" name="S5Q3">Nici una
+        </div>
+        
+        <div class="query">
+            4. Un numar N la o putere P se calculeaza in cel mai eficient mod ca:
+        </div>
+        <div class="answer">
+            <input id="S5Q4A1" type="radio" name="S5Q4">Un suma de N la puterea unei puteri a lui 2 <br>
+            <input id="S5Q4A2" type="radio" name="S5Q4">Un produs de P numere, fiecare numar fiind N <br>
+            <input id="S5Q4A3" type="radio" name="S5Q4">Un produs de N la puterea unei puteri a lui 2 <br>
+            <input id="S5Q4A4" type="radio" name="S5Q4">Un produs de N numere, fiecare numar fiind P
+        </div>
+        
+        <div class="query">
+            5. Calculeaza valoarea lui 534123<sup>233252</sup> modulo 666013.
+        </div>
+        <div class="answer">
+            <input id="S5Q5A1" type="radio" name="S5Q5">31233 <br>
+            <input id="S5Q5A2" type="radio" name="S5Q5">103424 <br>
+            <input id="S5Q5A3" type="radio" name="S5Q5">352343 <br>
+            <input id="S5Q5A4" type="radio" name="S5Q5">28441
+        </div>
+        
+        <div class="subject addSpaceTop">
+            &emsp;&emsp;Povestea continuă...
+        </div>
+        
+        <div class="query">
+            Ce s-a intamplat cu fiul cel mic, Denis Crînganu?
+        </div>
+        <div class="answer">
+            <input id="S6Q1A1" type="radio" name="S6Q1">Inca este plecat in cautarea tipului imbracat in negru <br>
+            <input id="S6Q1A2" type="radio" name="S6Q1">I se pierde urma in orasul Adjud <br>
+            <input id="S6Q1A3" type="radio" name="S6Q1">Gaseste Gnobul Magic <br>
+            <input id="S6Q1A4" type="radio" name="S6Q1">It depends on our imagination
+        </div>
+        
+        <div class="query">
+            Unde este Gnobul Magic?
+        </div>
+        <div class="answer">
+            <input id="S6Q2A1" type="radio" name="S6Q2">La fiul cel mic <br>
+            <input id="S6Q2A2" type="radio" name="S6Q2">Dispare pentru totdeauna <br>
+            <input id="S6Q2A3" type="radio" name="S6Q2">La tipul imbracat in negru cu palarie neagra <br>
+            <input id="S6Q2A4" type="radio" name="S6Q2">It depends on our imagination
+        </div>
+        
+        <button class="submitButton" onclick="verify()">Submit</button>
+        
+        <div id="results" class="results">
+            Rezultat: 
+        </div>
+    </div>
+</body>
