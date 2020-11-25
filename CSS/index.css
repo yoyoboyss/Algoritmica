@@ -1,0 +1,94 @@
+body{
+    background-color: rgba(10, 10, 10, 1);
+}
+
+h1{
+    color: white;
+    margin-top: 1%;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 270%;
+    font-family: 'Nunito', sans-serif;
+}
+
+h2{
+    color: white;
+    margin-top: 0.1vh;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 100%;
+    font-family: 'Nunito', sans-serif;
+}
+
+.text{
+    color: white;
+    background-color: rgba(31, 31, 31, 1);
+    font-family: 'Nunito', sans-serif;
+    font-size: 145%;
+    border-style: solid;
+    border-color: white;
+    padding: 2vh 1vw;
+}
+
+.par1{
+    margin: 3% 55% 0% 5%;
+}
+
+.par2{
+    margin: -13% 3% 0% 50%;
+}
+
+.code{
+    position: absolute;
+    color: white;
+    display: inline;
+    background-color: rgba(20, 20, 20, 1);
+    border-style: solid;
+    border-color: white;
+    padding: 2vh 1vw;
+}
+
+.happiness{
+    font-size: 1.8em;
+    margin-left: 6%;
+    margin-right: 45%;
+    margin-top: 0.2%;
+}
+
+.beHappy{
+    position: absolute;
+    color: white;
+    font-size: 1.9em;
+    margin-left: 58%;
+    margin-top: 3%;
+    margin-right: 0%;
+}
+
+.colRed{
+    color: rgba(226, 29, 29, 1);
+    display: inline;
+}
+
+.colCyan{
+    color: rgba(28, 207, 217, 1);
+    display: inline;
+}
+
+.colPurple{
+    color: rgba(113, 28, 217, 1);
+    display: inline;
+}
+
+.nextPage{
+    margin: 15% 0% 0% 85%;
+    font-family: inherit;
+}
+
+.nextPage a{
+    color: white;
+    background-color: rgba(25, 25, 25, 1);
+    text-decoration: none;
+    border: solid white 2px;
+    padding: 2vh 1vw;
+    font-size: 150%;
+}
