@@ -1,0 +1,2 @@
+# Algoritmica
+Despre Algoritmica
