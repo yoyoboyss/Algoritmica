@@ -1,0 +1,124 @@
+<head>
+    <title>
+        Descriere
+    </title>
+    
+    <link rel="stylesheet" href="../../CSS/menu.css">
+    <link rel="stylesheet" href="../../CSS/Problem%20B/binNumber.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+    <script src="../../JS/binNumber.js"></script>
+</head>
+
+<body onload="doStart()">
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Descriere solutie</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;Solutie O(log<sub>2</sub>X * N)</div>
+        &emsp;&emsp;Reprezentarea binara a unui numar reprezinta scrierea acestuia in baza 2. Vom lua ca exemplu numarul 304, care in baza 10 poate fi scris ca: <br>
+        <center>304 = 3 * 10<sup>2</sup> + 0 * 10<sup>1</sup> + 4 * 10<sup>0</sup></center>
+        &emsp;&emsp;Pe scurt, scrierea unui numar intr-o baza reprezinta scrierea acestuia ca o suma de puteri a acelei baze, iar reprezentare sa in acea baza va fi formata din termenii aflati inainte puterii baze respective, in cazul nostru ii avem pe 3, 0 si 4.<br>
+        &emsp;&emsp;Pentru a reprezenta numarul 304 in baza 2, trebuie sa-l scriem ca o suma de puteri a lui 2, care este:
+        <center>304 = 1 * 2<sup>8</sup> + 1 * 2<sup>5</sup> + 1 * 2<sup>4</sup></center>
+        &emsp;&emsp;Mai exista cateva puteri a lui 2 care nu se vad deoarece puterile sunt inmultite cu 0 dupa cum arata mai jos:
+        <center>304 = 1 * 2<sup>8</sup> + 0 * 2<sup>7</sup> + 0 * 2<sup>6</sup> + 1 * 2<sup>5</sup> + 1 * 2<sup>4</sup> + 0 * 2<sup>3</sup> + 0 * 2<sup>2</sup> + 0 * 2<sup>1</sup> + 0 * 2<sup>0</sup></center>
+        &emsp;&emsp;Dupa cum am spus anterior, pentru a putea reprezenta numarul intr-o baza ne uitam la termenii din fata puterilor lui 2, parcurgand termenii de la puterea cea mai mica la cea mai mare, iar scrierea lor se va face de la dreapta la adica:
+        <center>304 = 100110000</center>
+        &emsp;&emsp;Inainte ultimul bit, cel mai din dreapta, mai exista multi de 0 dar pe care nu are rost sa-i scriem deoarece n-ar schimba valoarea rezultatul, efectul fiind asemanator ca si am vrea sa-l scriem pe 304 ca 0000304, care de fapt, tot 304 inseamna.<br>
+        
+        &emsp;&emsp;O metoda de rezolvare a acestei probleme implica preluare numarului x si impartirea lui la 2, daca restul impartirii lui x la 2 da atunci, atunci primul bit este 1, iar daca restul este 0, atunci primul bit este 0, dupa care il vom imparti pe x la 2, de aceasta data impartirea realizandu-se fara rest si fara virgula. Vom continua acest proces cat timp x este diferit de 0, iar bitii vor fi calculati de la dreapta la stanga. Deoarece impartim la 2 numarul x cat timp este diferit, numarul acestor operatii va fi <i>log<sub>2</sub>X</i>, ceea ce inseamna ca complexitatea pentru a afla reprezentarea binara a unui numar va fi O(log<sub>2</sub>X), iar din cauza ca vom efecuta acest algoritm pentru N numere, complexitatea devine O(log<sub>2</sub>X * N).<br>
+        &emsp;&emsp;Codul pentru un asemenea algoritm ar fi:
+        
+        <div class="code">
+            <div class="colCyan">int</div> x, M, pos; <br>
+            <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> i <div class="colRed">=</div> 1; i <div class="colRed"><=</div> N; i<div class="colRed">++</div><div class="colYellow">){</div>
+            &emsp;&emsp; <div class="colComment">// <i>parcurgem cele N elemente</i></div> <br>
+            &emsp;&emsp; <div class="colGreen">cin</div> <div class="colRed">>></div> x; 
+            &emsp;&emsp; <div class="colComment">// <i>citim elementul</i></div><br>
+                &emsp;&emsp; pos <div class="colRed">=</div> 0; 
+            &emsp;&emsp; <div class="colComment">// <i>pos va retine numarului bitului la care am ajuns</i></div><br>
+                &emsp;&emsp; <div class="colRed">while</div><div class="colYellow">(</div>x<div class="colYellow">){</div> 
+                &emsp;&emsp; <div class="colComment">// <i>cat timp x este diferit de 0</i></div><br>
+                &emsp;&emsp;&emsp;&emsp; bits[pos<div class="colRed">++</div>] <div class="colRed">=</div> x <div class="colRed">%</div> 2; &emsp;&emsp; <div class="colComment">// <i>bits[pos] va retine valoare bitului de pe pozita pos</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp; <div class="colRed">if</div><div class="colYellow">(</div>x <div class="colRed">%</div> 2<div class="colYellow">)</div> <br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; M <div class="colRed">=</div> pos; 
+                    &emsp;&emsp; <div class="colComment">// <i>retinem pozitia cea mai mare unde am gasit un bit 1</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp; x <div class="colRed">/=</div> 2; 
+                    &emsp;&emsp; <div class="colComment">// <i>impartim pe x la 2</i></div><br>
+                &emsp;&emsp; <div class="colYellow">}</div> <br>
+                &emsp;&emsp; <div class="colRed">for</div><div class="colYellow">(</div><div class="colCyan">int</div> j <div class="colRed">=</div> M - 1; j <div class="colRed">>=</div> 0; j<div class="colRed">--</div><div class="colYellow">){</div>
+                &emsp;&emsp; <div class="colComment">// <i>parcurgem cei M biti gasiti</i></div><br>
+                    &emsp;&emsp;&emsp;&emsp; <div class="colGreen">cout</div> <div class="colRed"><<</div> bits[j];
+                    &emsp;&emsp; <div class="colComment">// <i>afisam bitul de pe pozitia j</i></div><br>
+                &emsp;&emsp; <div class="colGreen">cout</div> <div class="colRed"><<</div> <div class="colPurple">'\n'</div>; <br>
+            <div class="colYellow">}</div>
+        </div>
+        
+        &emsp;&emsp;O reprezentare grafica a acestei metoda poate fi observata mai jos, unde puteti seta dumnevoastra numarul pe care doriti sa-l scrieti in baza 2.
+        
+        <div class="myGraph">
+            <div class="myInput">
+                <input type="text" id="myInputText" class="myInputText" value="304">
+                <button id="inputButton" class="inputButton" onclick="runCommand(this)">Run</button>
+            </div>
+            
+            <div class="myValues">
+                <table id="myTable" class="myTable">
+                    <tr>
+                        <th>var</th>
+                        <th>value</th>
+                    </tr>
+                    <tr>
+                        <th>x</th>
+                        <th>304</th>
+                    </tr>
+                    <tr>
+                        <th>x % 2</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>x / 2</th>
+                        <th>152</th>
+                    </tr>
+                    <tr>
+                        <th>ans</th>
+                        <th>0</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+            
+        <div class="nextPage">
+            <a href="../Problem%20C/littleSon.html">Next Page</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,134 @@
+<head>
+    <title>
+        Numar binar
+    </title>
+    
+    <link rel="stylesheet" href="..\..\CSS\menu.css">
+    <link rel="stylesheet" href="..\..\CSS\task.css">
+    
+    <script src="../../JS/dropMenu.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="logo">
+            <b>ALGORITMICA</b>
+        </div>
+        
+        <a href="../../index.html"> 
+            <button class="home button">Home</button>
+        </a>
+        
+        <a href="../test.html">
+            <button class="test button">Test</button>
+        </a>
+        
+        <a href="../contact.html">
+            <button class="contact button">Contact</button>
+        </a>
+        
+        <div class="dropMenu">
+            <button onclick="showDropMenu()" class="algorithms button">Algorithms</button>
+            <div id="listDropMenu" class="myDropMenu">
+                <a href="../Problem%20A/partialSum.html">A) Sume parțiale 1D</a>
+                <a href="binNumber.html">B) Reprezentarea binară a unui număr</a>
+                <a href="../Problem%20C/littleSon.html">C) Algoritmul lui Lee</a>
+                <a href="../Problem%20D/binSearch.html">D) Căutare binară</a>
+                <a href="../Problem%20E/lgput.html">E) Ridicare la putere în timp logaritmic</a>
+            </div>
+        </div>
+    </div>
+    
+    <h1>Povestea Gnobului Magic</h1>
+    
+    <div class="text">
+        <div class="par">&emsp;&emsp;<b>Poveste</b></div>
+        <div>
+            &emsp;&emsp;După ați ajutat cu succes feciorul, acesta a reușit să deschidă cufărul misterior găsind ceva foarte dubios, și anume o licoare care conținea un lichid verde, foarte uimit feciorul se întreabă la ce ajută această licoare așa că o duce la înțeleptul satului. După ce s-a întors din călătoria sa, după încă 3 zile și 3 nopți, ajunge la înțeleptului satului unde află că nu este orice fel de licoare, este o licoare legendară care îți poate oferi puteri infinite dacă licoarea nu este un fals, genul acesta de licori dubioase fiind numite Gnob. Emoționat, feciorul nostru fuge repede acasă, se așează în față unei pungi cu aur și testează Gnobul. O singură picătură din această licoare îl face pe fecior să simtă că a călătorit prin 7 universe diferite, abia putând face față forței infinite pe care i-o oferea Gnobul, când aproape să cedeze corpul acestuia totul se oprește, feciorul își recăpăta repede conștiința, încă confuz de ceea ce s-a întâmplat și observă că Gnobul era plin la loc, dar ceva era și mai ciudat.. în față lui nu se mai află o singură pungă de aur, acum se aflau 2 pungi de aur perfect identice, feciorul nostru dându-și seama că acesta este căutatul Gnob, dar care nu era orice fel de Gnob, era un Gnob magic, astfel luând naștere ceea ce va deveni mai târziu Povestea Gnobului Magic.  În călătoria sa prin cele 7 universe prin care a trecut feciorul nostru, acesta a observat modul în care poate ajunge împărat, acesta fiind nevoit să găsească răspunsu la întrebarea: care este reprezentarea binară a <b>N</b> numere întregi? Neștiind exact la ce se referă problema, feciorul vă cere ajutorul vostru, iar dacă-l veți ajută cu succes, vă promite că va împărtăși cu voi puterea Gnobului Magic.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Cerință</b></div>
+        <div>
+            &emsp;&emsp;Dându-se un număr natural N și un șir cu N elemente naturale in baza 10, printați reprezentarea binară a elementelor șirului.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de intrare</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de intrare <u><i>gnob.in</i></u> conține pe prima linie un număr natural N. Pe următoarele N linii vor fi scrise elementului șirului descris în enunțul problemei.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Date de ieșire</b></div>
+        <div>
+            &emsp;&emsp;Fișierul de ieșire <u><i>gnob.out</i></u> va conține N linii, pe a i-a linie fiind scrisă reprezentarea binară a elemetului i din șirul dat. Numărul fiind scris de la dreapta la stânga, ceea ce înseamnă că primul bit va fi ultimul din dreapta.
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Restricții</b></div>
+        <div>
+            <ul>
+                <li>1 &#8804; N &#8804; 200 000;</li>
+                <li>0 &#8804; v[i] &#8804; 2 000 000 000, unde v[i] este element al sirului;</li>
+            </ul>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Exemplu</b></div>
+        <div>
+            <table class="exempleTable">
+                <tr class="trHead">
+                    <th>gnob.in</th>
+                    <th>gnob.out</th>
+                </tr>
+                <tr class="exRow">
+                    <th>
+                        10<br>
+                        5<br>
+                        13<br>
+                        9<br>
+                        3<br>
+                        54<br>
+                        102<br>
+                        253<br>
+                        1523<br>
+                        163235<br>
+                        1233612125
+                        
+                    </th>
+                    <th>
+                        101<br>
+                        1101<br>
+                        1001<br>
+                        11<br>
+                        110110<br>
+                        11111101<br>
+                        10111110011<br>
+                        100111110110100011<br>
+                        1001001100001110110110101011101
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="par">&emsp;&emsp;<b>Explicare</b></div>
+        <div>
+            &emsp;&emsp;Numerele binare se citesc de la dreapta la stanga, bitul cel mai din dreapta fiind primul.<br>
+            &emsp;&emsp;5 = 2<sup>2</sup> + 2<sup>0</sup>;<br>
+             &emsp;&emsp;13 = 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>0</sup>;<br>
+            &emsp;&emsp;54 = 2<sup>5</sup> + 2<sup>4</sup> + 2<sup>2</sup> + 2<sup>1</sup>;
+        </div>
+        
+        <div class="nxtPage">
+            <a href="descriere.html" class="nextPage">Descrierea solutiei</a>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
